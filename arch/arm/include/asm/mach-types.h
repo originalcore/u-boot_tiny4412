@@ -1062,6 +1062,7 @@ extern unsigned int __machine_arch_type;
 #define MACH_TYPE_MONCH                3453
 #define MACH_TYPE_CURACAO              3454
 #define MACH_TYPE_ORIGEN               3455
+#define MACH_TYPE_TINY4412             4608
 #define MACH_TYPE_EPC10                3456
 #define MACH_TYPE_SGH_I740             3457
 #define MACH_TYPE_TUNA                 3458
@@ -13670,6 +13671,18 @@ extern unsigned int __machine_arch_type;
 # define machine_is_origen()	(machine_arch_type == MACH_TYPE_ORIGEN)
 #else
 # define machine_is_origen()	(0)
+#endif
+
+#ifdef CONFIG_MACH_TINY4412
+# ifdef machine_arch_type
+#  undef machine_arch_type
+#  define machine_arch_type	__machine_arch_type
+# else
+#  define machine_arch_type	MACH_TYPE_TIN4412
+# endif
+# define machine_is_tiny4412() 	(machine_arch_type == MACH_TYPE_TIN4412)
+#else
+# define machine_is_tiny4412()	(0)
 #endif
 
 #ifdef CONFIG_MACH_EPC10
